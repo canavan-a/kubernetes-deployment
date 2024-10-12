@@ -1,0 +1,31 @@
+# watchtower will ensure all images in the node are watched
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: watchtower
+  namespace: acanavan-namespace
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: watchtower
+  template:
+    metadata:
+      labels:
+        app: watchtower
+    spec:
+      containers:
+        - name: watchtower
+          image: containrrr/watchtower:latest
+          args:
+            - --interval
+            - "30" # Check every 30 seconds (adjust as needed)
+            - --label-enable
+            - --cleanup # Remove old images
+          volumeMounts:
+            - name: dockersock
+              mountPath: /var/run/docker.sock # Watchtower needs Docker socket access
+      volumes:
+        - name: dockersock
+          hostPath:
+            path: /var/run/docker.sock

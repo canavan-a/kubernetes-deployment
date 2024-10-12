@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vitesweeper
+  namespace: acanavan-namespace
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vitesweeper # app name
+  template:
+    metadata:
+      labels:
+        app: vitesweeper # app name
+    spec:
+      containers:
+        - name: vitesweeper # container name
+          image: <your-docker-registry>/my-app:latest # Replace with your registry
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80 # Expose port as needed
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: vitesweeper-service
+  namespace: acanavan-namespace
+spec:
+  selector:
+    app: vitesweeper
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: ClusterIP
