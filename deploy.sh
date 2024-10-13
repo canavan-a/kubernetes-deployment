@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# get nginx ingress
+# kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/cloud/deploy.yaml
+
 # namespace
 kubectl apply -f k8s/namespace.yaml
 
