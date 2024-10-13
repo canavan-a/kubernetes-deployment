@@ -16,7 +16,7 @@ metadata:
     kubernetes.io/ingress.class: "nginx"
 spec:
   rules:
-    - host: localhost
+    - host: vitesweeper.localhost
       http:
         paths:
           - path: /
