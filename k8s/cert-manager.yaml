@@ -1,0 +1,13 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: acanavan-tls
+  namespace: acanavan-namespace
+spec:
+  secretName: acanavan-tls
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  commonName: "*.acanavan.com"
+  dnsNames:
+    - "*.acanavan.com"
