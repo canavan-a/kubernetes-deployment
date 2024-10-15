@@ -11,3 +11,5 @@ sudo kubectl version --client --output=yaml
 # get nginx ingress
 sudo kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/cloud/deploy.yaml
 
+# cert manager
+sudo kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.11.0/cert-manager.yaml
