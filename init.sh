@@ -13,3 +13,6 @@ sudo kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx
 
 # cert manager
 sudo kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.11.0/cert-manager.yaml
+
+sudo kubectl create secret docker-registry ecr-secret --docker-server=766216391680.dkr.ecr.us-east-2.amazonaws.com --docker-username=AWS --docker-password={password} --docker-email=your-email@example.com -n acanavan-namespace
+
