@@ -16,7 +16,7 @@ metadata:
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
 
 spec:
-  spec.ingressClassName: "nginx"
+  ingressClassName: "nginx"
   tls:
     - hosts:
         - "*.canavan.com"
