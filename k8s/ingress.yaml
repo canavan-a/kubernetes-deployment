@@ -18,10 +18,10 @@ metadata:
 spec:
   tls:
     - hosts:
-        - ec2-18-222-152-137.us-east-2.compute.amazonaws.com
+        - "*.canavan.com"
       secretName: acanavan-tls
   rules:
-    - host: ec2-18-222-152-137.us-east-2.compute.amazonaws.com
+    - host: vitesweepernew.acanavan.com
       http:
         paths:
           - path: /
