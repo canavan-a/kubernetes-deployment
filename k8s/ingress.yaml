@@ -16,7 +16,7 @@ metadata:
     kubernetes.io/ingress.class: "nginx"
 spec:
   rules:
-    - host: vitesweeper.localhost
+    - host: ec2-18-222-152-137.us-east-2.compute.amazonaws.com
       http:
         paths:
           - path: /

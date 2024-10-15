@@ -3,8 +3,6 @@ kind: Deployment
 metadata:
   name: vitesweeper
   namespace: acanavan-namespace
-  annotations:
-    com.centurylinklabs.watchtower.enable: "true" # Place annotation here
 spec:
   replicas: 1
   selector:
@@ -17,16 +15,19 @@ spec:
     spec:
       containers:
         - name: vitesweeper # container name
-          image: vitesweeper:latest # Replace with your registry
-          imagePullPolicy: IfNotPresent # this is redundant because :latest
+          image: 766216391680.dkr.ecr.us-east-2.amazonaws.com/vitesweeper:latest
+          imagePullPolicy: Always
+
           ports:
-            - containerPort: 80 # Expose port as needed
-          readinessProbe: # Add the readiness probe here
+            - containerPort: 80
+          readinessProbe:
             httpGet:
               path: /
               port: 80
             initialDelaySeconds: 5
             periodSeconds: 10
+      imagePullSecrets:
+        - name: ecr-secret
 ---
 apiVersion: v1
 kind: Service

@@ -4,12 +4,10 @@ curl -sfL https://get.k3s.io | sh -
 sudo systemctl status k3s
 sudo k3s kubectl get nodes
 
-# add permission for kubectl 
-sudo ln -s /usr/local/bin/k3s /usr/local/bin/kubectl
+sudo kubectl version --client
 
-kubectl version --client
-
-kubectl version --client --output=yaml
+sudo kubectl version --client --output=yaml
 
 # get nginx ingress
-kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/cloud/deploy.yaml
+sudo kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/cloud/deploy.yaml
+
