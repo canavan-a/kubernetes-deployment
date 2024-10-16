@@ -11,7 +11,3 @@ spec:
   commonName: "*.acanavan.com"
   dnsNames:
     - "*.acanavan.com"
-  solvers:
-    - http01:
-        ingress:
-          class: nginx
