@@ -1,11 +1,3 @@
-# you might need the minikube ingress
-# use command:
-# minikube addons enable ingress
-
-# needs nginx ingress
-# use:
-# kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/cloud/deploy.yaml
-
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -13,22 +5,22 @@ metadata:
   namespace: acanavan-namespace
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
-    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    cert-manager.io/issuer: "letsencrypt-prod" # Use this for the standard issuer annotation
 
 spec:
-  ingressClassName: "nginx"
+  ingressClassName: "nginx" # Ensure this matches the ingress class you've configured
   tls:
     - hosts:
-        - "*.acanavan.com"
-      secretName: acanavan-tls # This should be indented under the tls section
+        - "*.acanavan.com" # Wildcard for subdomains
+      secretName: acanavan-tls # Name of the secret for the TLS certificate
   rules:
-    - host: vitesweepernew.acanavan.com
+    - host: vitesweepernew.acanavan.com # Specific subdomain routing
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: vitesweeper-service # Change this to the name of the service you want to route to
+                name: vitesweeper-service # Replace with your actual service name
                 port:
-                  number: 80
+                  number: 80 # Ensure this matches your service's port
