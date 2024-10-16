@@ -8,7 +8,6 @@ spec:
   issuerRef:
     name: letsencrypt-prod # Referencing the production issuer
     kind: ClusterIssuer
-  commonName: "vitesweepernew.acanavan.com"
+  commonName: "*.acanavan.com"
   dnsNames:
-    - vitesweepernew.acanavan.com
     - "*.acanavan.com"
