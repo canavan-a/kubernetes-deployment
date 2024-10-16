@@ -19,8 +19,8 @@ spec:
   ingressClassName: "nginx"
   tls:
     - hosts:
-        - "*.canavan.com"
-      secretName: acanavan-tls
+        - "*.acanavan.com"
+      secretName: acanavan-tls # This should be indented under the tls section
   rules:
     - host: vitesweepernew.acanavan.com
       http:
