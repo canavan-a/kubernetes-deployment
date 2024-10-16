@@ -6,7 +6,7 @@ metadata:
 spec:
   secretName: acanavan-tls
   issuerRef:
-    name: letsencrypt-prod
+    name: letsencrypt-prod # Referencing the production issuer
     kind: ClusterIssuer
   commonName: "*.acanavan.com"
   dnsNames:

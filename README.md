@@ -13,4 +13,4 @@ TODO: check if watchtower works
 go to secure .pem file location: `C:\Users\Aidan\.ssh`
 
 use command to ssh:
-`ssh -i acanavan-keypair.pem ec2-user@ec2-18-224-82-237.us-east-2.compute.amazonaws.com`
+`ssh -i acanavan-keypair.pem ec2-user@ec2-18-222-152-137.us-east-2.compute.amazonaws.com`
