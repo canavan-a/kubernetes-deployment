@@ -12,5 +12,9 @@ kubectl create secret tls acanavan-manual-tls \
     --key=my-cert.key \
     --namespace acanavan-namespace
 
+kubectl create secret tls acanavan-manual-letsencrypt-tls \
+    --cert=/etc/letsencrypt/live/acanavan.com/fullchain.pem \
+    --key=/etc/letsencrypt/live/acanavan.com/privkey.pem
+
 # Optional: Clean up the generated files if you don't need them locally
 rm my-cert.key my-cert.crt

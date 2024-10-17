@@ -10,7 +10,7 @@ spec:
   tls:
     - hosts:
         - "*.acanavan.com" # Wildcard for subdomains
-      secretName: acanavan-manual-tls # Name of the secret for the TLS certificate
+      secretName: acanavan-manual-letsencrypt-tls # Name of the secret for the TLS certificate
   rules:
     - host: vitesweepernew.acanavan.com # Specific subdomain routing
       http:
