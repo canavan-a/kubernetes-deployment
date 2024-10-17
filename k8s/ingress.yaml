@@ -5,15 +5,12 @@ metadata:
   namespace: acanavan-namespace
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
-    cert-manager.io/cluster-issuer: "letsencrypt-prod" # Use this for the standard issuer annotation
-    cert-manager.io/issue-temporary-certificate: "true" # Issue a temporary certificate
-    acme.cert-manager.io/http01-edit-in-place: "true"
 spec:
   ingressClassName: "nginx" # Ensure this matches the ingress class you've configured
   tls:
     - hosts:
         - "*.acanavan.com" # Wildcard for subdomains
-      secretName: acanavan-tls # Name of the secret for the TLS certificate
+      secretName: acanavan-manual-tls # Name of the secret for the TLS certificate
   rules:
     - host: vitesweepernew.acanavan.com # Specific subdomain routing
       http:
@@ -25,3 +22,4 @@ spec:
                 name: vitesweeper-service # Replace with your actual service name
                 port:
                   number: 80 # Ensure this matches your service's port
+
