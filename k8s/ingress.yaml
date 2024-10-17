@@ -5,6 +5,7 @@ metadata:
   namespace: acanavan-namespace
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
 spec:
   ingressClassName: "nginx" # Ensure this matches the ingress class you've configured
   tls:
