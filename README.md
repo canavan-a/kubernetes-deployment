@@ -60,3 +60,13 @@ certbot/certbot certonly --manual --preferred-challenges=dns \
 -n acanavan-namespace`
 
 6. reference this secret in your deployment.yaml file
+
+## create a new revision (for deploying)
+
+use the folllowing command to generate a new revision when a fresh container is published:
+
+`sudo kubectl rollout restart deployment/{deployment name} -n {namespace name}`
+
+watch the pod status to see if the deployment was a success:
+
+`sudo kubectl get pods -n {namespace name}`
