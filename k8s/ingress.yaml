@@ -24,3 +24,13 @@ spec:
                 port:
                   number: 80 # Ensure this matches your service's port
 
+    - host: vitesweepertest.acanavan.com # Specific subdomain routing
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: vitesweeper-service # Replace with your actual service name
+                port:
+                  number: 80 # Ensure this matches your service's port
