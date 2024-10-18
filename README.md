@@ -44,22 +44,14 @@ certbot/certbot certonly --manual --preferred-challenges=dns \
 2. use aws configure to sign into the role in EC2
 3. allow docker to have access to aws and low level control
 
-   `> sudo usermod -aG docker ec2-user`
+make cron job to refresh ecr secret on `ecr-cron.sh`
 
-   `> newgrp docker`
+1. install cronie
 
-4. run a `docker pull` on your favorite repo
-5. create a long term secret for ECR
+`chmod +x ecr_secret_update.sh`
 
-   `ECR_PASSWORD=$(aws ecr get-login-password --region us-east-2)`
-
-   `sudo kubectl create secret docker-registry ecr-creds \
---docker-server=766216391680.dkr.ecr.us-east-2.amazonaws.com \
---docker-username=AWS \
---docker-password="$ECR_PASSWORD" \
--n acanavan-namespace`
-
-6. reference this secret in your deployment.yaml file
+open crontab editor
+`crontab -e`
 
 ## create a new revision (for deploying)
 
