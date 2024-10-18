@@ -38,7 +38,7 @@ certbot/certbot certonly --manual --preferred-challenges=dns \
 --key=/etc/letsencrypt/live/acanavan.com/privkey.pem \
 -n acanavan-namespace`
 
-## credentialing ECR
+## credentialing ECR (set up cron)
 
 1. add a IAM role that has AmazonEC2ContainerRegistryPullOnly and cli access
 2. use aws configure to sign into the role in EC2
@@ -48,10 +48,17 @@ make cron job to refresh ecr secret on `ecr-cron.sh`
 
 1. install cronie
 
-`chmod +x ecr_secret_update.sh`
+2. make the executable executable
 
-open crontab editor
-`crontab -e`
+   `chmod +x ecr_secret_update.sh`
+
+3. open crontab editor
+
+   `crontab -e`
+
+4. add your config:
+
+   `0 */5 * * * /bin/bash /home/ec2-user/kubernetes-deployment/ecr-cron.sh >> /var/log/ecr-cron.log 2>&1`
 
 ## create a new revision (for deploying)
 
