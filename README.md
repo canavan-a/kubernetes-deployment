@@ -38,7 +38,7 @@ certbot/certbot certonly --manual --preferred-challenges=dns \
 --key=/etc/letsencrypt/live/acanavan.com/privkey.pem \
 -n acanavan-namespace`
 
-## credentialing ECR (set up cron)
+## credentialing ECR (set up cron) \* does not work
 
 1. add a IAM role that has AmazonEC2ContainerRegistryPullOnly and cli access
 2. use aws configure to sign into the role in EC2
@@ -50,7 +50,7 @@ make cron job to refresh ecr secret on `ecr-cron.sh`
 
 2. make the executable executable
 
-   `chmod +x ecr_secret_update.sh`
+   `chmod +x ecr-cron.sh`
 
 3. open crontab editor
 
