@@ -1,14 +1,10 @@
 #!/bin/bash
 
-# generate ecr token
-sudo bash ecr-cron.sh
-
 # namespace
 kubectl apply -f k8s/namespace.yaml
 
 # applications
 kubectl apply -f k8s/vitesweeper.yaml
-
 
 # nginx
 kubectl apply -f k8s/ingress.yaml
