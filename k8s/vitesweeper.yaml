@@ -27,7 +27,7 @@ spec:
             initialDelaySeconds: 5
             periodSeconds: 10
       imagePullSecrets:
-        - name: ecr-secret
+        - name: ecr-creds
 ---
 apiVersion: v1
 kind: Service
