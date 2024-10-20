@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: public-chat
+  namespace: acanavan-namespace
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: public-chat # app name
+  template:
+    metadata:
+      labels:
+        app: public-chat # app name
+    spec:
+      containers:
+        - name: public-chat # container name
+          image: 766216391680.dkr.ecr.us-east-2.amazonaws.com/public-chat:latest
+          imagePullPolicy: Always
+
+          ports:
+            - containerPort: 80
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 10
+      imagePullSecrets:
+        - name: ecr-creds
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: public-chat-service
+  namespace: acanavan-namespace
+spec:
+  selector:
+    app: public-chat
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: ClusterIP

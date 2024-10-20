@@ -34,3 +34,25 @@ spec:
                 name: vitesweeper-service
                 port:
                   number: 80
+
+    - host: chat.acanavan.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: public-chat-service
+                port:
+                  number: 80
+
+    - host: chatnew.acanavan.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: public-chat-service
+                port:
+                  number: 80
