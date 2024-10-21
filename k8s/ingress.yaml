@@ -11,7 +11,10 @@ spec:
   tls:
     - hosts:
         - "*.acanavan.com" # Wildcard for subdomains
-      secretName: acanavan-manual-letsencrypt-tls # Name of the secret for the TLS certificate
+      secretName: acanavan-manual-letsencrypt-tls
+    - hosts:
+        - "*.lunargen.com"
+      secretName: lunargen-manual-letsencrypt-tls
   rules:
     - host: vitesweepernew.acanavan.com # Specific subdomain routing
       http:
@@ -23,6 +26,17 @@ spec:
                 name: vitesweeper-service # Replace with your actual service name
                 port:
                   number: 80 # Ensure this matches your service's port
+
+    - host: vitesweeper.lunargen.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: vitesweeper-service
+                port:
+                  number: 80
 
     - host: vitesweeper.acanavan.com
       http:
