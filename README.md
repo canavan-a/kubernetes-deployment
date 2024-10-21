@@ -25,6 +25,9 @@ use command to ssh:
 certbot/certbot certonly --manual --preferred-challenges=dns \
 -d "*.acanavan.com"`
 
+add the following flag at the end to specify dir to save in:
+`--cert-name wildcard-acanavan`
+
 3. for wildcard certs, add the TXT record in DNS settings:
 
    `_acme-challenge.{your domain}.com`
